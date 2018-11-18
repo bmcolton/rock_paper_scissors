@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript">
+      let winner = 0;
+      game();
+
+      function game() {
+        let playerScore = 0;
+        let computerScore = 0;
+        while (playerScore !== 2 && computerScore !== 2) {
+          let userInput = prompt("Choose one: rock paper scissors").toLowerCase();
+          let computerInput = computerPlay();
+          let retStr = playRound(userInput,computerInput);
+          console.log(retStr);
+          if (winner === 0) {
+            computerScore++;
+          } else if (winner === 1) {
+            playerScore++;
+          }
+        }
+        if (playerScore == 2) {
+          alert("Congrats you won best two out of three!")
+        }
+        if (computerScore == 2) {
+          alert("Oh no! You lost best two out of three!")
+        }
+      }
+
+      function computerPlay() {
+        let move = Math.floor(Math.random() * 3) + 1;
+        if (move === 1) {
+          return "rock";
+        } else if (move === 2) {
+            return "paper";
+        } else {
+          return "scissors";
+        }
+      }
+
+      function playRound(playerSelection, computerSelection) {
+        if (playerSelection === "rock") {
+          if (computerSelection === "paper") {
+            winner = 0;
+            return "You lose! Paper beats rock!";
+          } else if (computerSelection === "scissors") {
+            winner = 1;
+            return "You Win! Rock beats scissors!";
+          } else {
+            winner = 2;
+            return "Tie!";
+          }
+        } else if (playerSelection === "paper") {
+          if (computerSelection = "scissors") {
+            winner = 0;
+            return "You lose! Scissors beats paper!";
+          } else if (computerSelection === "rock") {
+            winner = 1;
+            return "You Win! Paper beats Rock!";
+          } else {
+            winner = 2;
+            return "Tie!";
+          }
+        } else {
+          if (computerSelection === "rock") {
+            winner = 0;
+            return "You lose! Rock beats scissors!";
+          } else if (computerSelection === "paper") {
+            winner = 1;
+            return "You Win! Scissors beats paper!";
+          } else {
+            winner = 2;
+            return "Tie!";
+          }
+        }
+      }
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>
